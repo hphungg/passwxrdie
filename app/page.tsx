@@ -11,10 +11,10 @@ import Rule from '@/rules/Rule';
 
 export default function Home() {
 	const [password, setPassword] = useState('');
-	const passwordRef = useRef<any>(null);
+	const passwordRef = useRef<HTMLTextAreaElement>(null);
 	const [solved, setSolved] = useState(false);
 	const [ruleState, setRuleState] = useState<Rule[]>([]);
-	const [ruleBoxRef, ruleBoxAnimation] = useAutoAnimate();
+	const [ruleBoxRef] = useAutoAnimate();
 	const ruleCount = useRef(0);
 
 	useEffect(() => {
@@ -41,7 +41,7 @@ export default function Home() {
 			return;
 		}
 
-		let rules = ruleState;
+		const rules = ruleState;
 
 		if (!rules[0].unlocked && password.length > 0) {
 			rules[0].unlocked = true;
@@ -76,7 +76,7 @@ export default function Home() {
 
 	function regenerateRule(num: number) {
 		num--;
-		let rules = ruleState;
+		const rules = ruleState;
 		if ("regenerate" in rules[num]) {
 			setRuleState(rules);
 		}
@@ -99,7 +99,7 @@ export default function Home() {
 				<PasswordBox password={password} setPassword={setPassAndCheckRules} textareaRef={passwordRef} />
 				<div ref={ruleBoxRef}>
 					{
-						solved && <div>Chiến thắng</div>
+						solved && <div className='my-4 text-2xl font-bold text-center'>Bạn gớm thật</div>
 					}
 					{
 						ruleState.filter(r => r.unlocked).sort(sort_rules).map(r => {

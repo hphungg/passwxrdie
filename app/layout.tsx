@@ -14,7 +14,7 @@ export default function RootLayout({
   return (
     <html lang="en">
         <head>
-            <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet" />
+            <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=optional" rel="stylesheet" />
         </head>
       
         <body>

@@ -4,8 +4,8 @@ interface RuleBoxProps {
     heading: string;
     msg: string;
     correct: boolean;
-    renderItem?: (props: any) => React.ReactNode;
-    propsToChild?: any;
+    renderItem?: (props: unknown) => React.ReactNode;
+    propsToChild?: unknown;
 }
 
 export default function RuleBox({ heading, msg, correct, renderItem, propsToChild }: RuleBoxProps) {
@@ -25,11 +25,9 @@ export default function RuleBox({ heading, msg, correct, renderItem, propsToChil
         `}>
             <div className={`
                 p-2
-                bg-[#fabac4]
-                text-[#a11a2c]
                 font-bold
                 transition-custom
-                ${correct ? "bg-[#b4ea99] text-[#32621a]" : ""}
+                ${correct ? "bg-[#b4ea99] text-[#32621a]" : "bg-[#fabac4] text-[#a11a2c]"}
             `}>
                 {correct?"\u{2705} ":"\u{274C} "} 
                 {heading}

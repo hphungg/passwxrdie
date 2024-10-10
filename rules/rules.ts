@@ -1,11 +1,21 @@
 import Rule from "./Rule";
+import RuleMorse from "./RuleMorse/RuleMorse";
 import RuleQR from "./RuleQR/RuleQR";
 import RuleSum from "./RuleSum/RuleSum";
+import RuleWordle from "./RuleWordle/RuleWordle";
+import RuleEarthquake from "./RuleEarthquake/RuleEarthQuake";
+import RuleQuiz from "./RuleQuiz/RuleQuiz";
 
 var rules = [
+    
     new Rule(
         "Mật khẩu phải chứa ít nhất 6 kí tự.", 
         (t: any) => t?.length >= 6
+    ),
+
+    new Rule(
+        "Mật khẩu phải chứa ít nhất 1 kí tự số.", 
+        (t: any) => /\d/.test(t)
     ),
 
     new Rule(
@@ -17,11 +27,18 @@ var rules = [
         "Mật khẩu phải chứa ít nhất 1 kí tự đặc biệt.",
         (t: any) => /\W/.test(t)
     ),
+  
+    new Rule(
+        "Mật khẩu của bạn phải chứa tên của GOAT trong bóng đá.",
+        (t: any) => (t.match(/messi/i) || []).length > 0
+    ),
 
     new Rule(
         "Mật khẩu phải chứa tất cả kí tự nguyên âm trong tiếng Anh (a, e, i, o, u).",
         (t: any) => /a/i.test(t) && /e/i.test(t) && /i/i.test(t) && /o/i.test(t) && /u/i.test(t)
     ),
+
+    new RuleQuiz(),
 
     new Rule(
         "Mật khẩu phải chứa ít nhất một số âm",
@@ -42,6 +59,11 @@ var rules = [
         (t: any) => (t.match(/[aeiou]/ig) || []).length === (t.match(/[bcdfghjklmnpqrstvwxys]/ig) || []).length
     ),
 
+    new RuleEarthquake(),
+
+    new RuleMorse(),
+
+
     new Rule(
         "Mật khẩu của bạn phải chứa độ dài của mật khẩu của bạn.",
         (t: any) => {
@@ -49,8 +71,9 @@ var rules = [
             let r = new RegExp(`${l}`);
             return r.test(t);
         }
-    )
+    ),
 
+    new RuleWordle(),
 ]
 
 function sort_rules(a: any, b: any) {

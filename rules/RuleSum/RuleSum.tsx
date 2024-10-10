@@ -4,7 +4,7 @@ export default class RuleSum extends Rule {
     target: number;
 
     constructor() {
-        super("Tổng các chữ số trong mật khẩu của bạn phải bằng ");
+        super("Tổng các chữ số (tính cả chữ số âm) trong mật khẩu của bạn phải bằng ");
         this.target = Math.ceil(Math.random()*6)*5;
         this.renderItem = () => <span>{this.target}</span>
     }

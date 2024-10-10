@@ -5,11 +5,11 @@ import React, { useEffect } from 'react'
 interface PasswordBoxProps {
 	password: string;
 	setPassword: (password: string) => void;
-	textareaRef: any;
+	textareaRef: React.RefObject<HTMLTextAreaElement>;
 }
 
 function PasswordBox({ password, setPassword, textareaRef }: PasswordBoxProps) {
-	function handleChange(e: any) {
+	function handleChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
 		setPassword(e.target.value)
 	}
 
@@ -18,7 +18,7 @@ function PasswordBox({ password, setPassword, textareaRef }: PasswordBoxProps) {
 			textareaRef.current.style.height = 'auto';
 			textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
 		}
-	}, [password]);
+	});
 
 	return (
 		<>
